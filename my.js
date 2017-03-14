@@ -17,16 +17,14 @@ function flatten(arr){
 
 
 /*
-http://underscorejs.org/#max
-http://underscorejs.org/#pluck
-http://underscorejs.org/#compact
+
 http://underscorejs.org/#findIndex
 http://underscorejs.org/#range
 */
 
 
 var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
-/**
+/** _.max
  * Возвращает элемент с максимальным значение какогото поля или -infinity если список пустой
  * @param {Array} arr  - входной список [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}]
  * @param {functuion}func функция которая возвращает заданный параметр сортировки stooge => stooge.age;
@@ -58,4 +56,23 @@ function pluck(arr, field){
  */
 function compact(arr){
     return arr.filter( item =>!(item === "" || item === 0 || item === null || item === false || item === undefined ) && (item === item));
+}
+
+/** _.findIndex
+ * возвращает первый индекс того значения, для которого func вернёт true. Если такой элемент не был найден, вернёт -1.
+ * @param {Array}arr
+ * @param {Function} func функция должна возвращать true или false
+ * @returns {number}
+ *
+ *_.findIndex([4, 6, 8, 12], isPrime);
+ * => -1 // не найден
+ * _.findIndex([4, 6, 7, 12], isPrime);
+ * => 2
+ *
+ */
+function findIndex(arr, func){
+    for (let i =0; i < arr.length; i++){
+        if(func(arr[i])) return i;
+    }
+    return -1;
 }
