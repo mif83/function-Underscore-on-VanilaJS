@@ -15,9 +15,6 @@ function flatten(arr){
 }
 
 
-
-
-
 var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
 /** _.max
  * Возвращает элемент с максимальным значение какогото поля или -infinity если список пустой
@@ -32,8 +29,6 @@ function max(arr, func){
     arr.forEach( (item, i) => {if(max < func(item)) result = item;});
     return result;
 }
-max(stooges, function(stooge){ return stooge.age; });
-
 /**
  * Возвращает массив из элементов выбраного поля аналог _.pluck()
  * @param {Array} arr  - входной список [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}]
@@ -52,7 +47,6 @@ function pluck(arr, field){
 function compact(arr){
     return arr.filter( item =>!(item === "" || item === 0 || item === null || item === false || item === undefined ) && (item === item));
 }
-
 /** _.findIndex
  * возвращает первый индекс того значения, для которого func вернёт true. Если такой элемент не был найден, вернёт -1.
  * @param {Array}arr
@@ -71,8 +65,6 @@ function findIndex(arr, func){
     }
     return -1;
 }
-
-
 /**_.range([start], stop, [step])
  * Создает набор целых чисел от start до end, если передали только один параметр то сгенерирует последовательность
  * от 0 до param с шагом 1
@@ -87,16 +79,16 @@ function range(start, end , step){
         end = start;
         start = 0;
         step = 1;
-    }
+    };
     if(start <= end && (step || 1) > 0){
         for (let i = start || 0; i < end; i+=step || 1 ){
             result.push(i);
         }
-    }
+    };
     if (start > end && step < 0){
         for (let i = start || 0; i > end; i+=step  ){
             result.push(i);
         }
-    }
+    };
     return result;
 }
