@@ -16,11 +16,6 @@ function flatten(arr){
 
 
 
-/*
-
-http://underscorejs.org/#findIndex
-http://underscorejs.org/#range
-*/
 
 
 var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
@@ -75,4 +70,33 @@ function findIndex(arr, func){
         if(func(arr[i])) return i;
     }
     return -1;
+}
+
+
+/**_.range([start], stop, [step])
+ * Создает набор целых чисел от start до end, если передали только один параметр то сгенерирует последовательность
+ * от 0 до param с шагом 1
+ * @param {number} start начальное значение
+ * @param {number} end конечное значение
+ * @param {number} step шаг
+ * @returns {Array}
+ */
+function range(start, end , step){
+    let result = [];
+    if (end === undefined){
+        end = start;
+        start = 0;
+        step = 1;
+    }
+    if(start <= end && (step || 1) > 0){
+        for (let i = start || 0; i < end; i+=step || 1 ){
+            result.push(i);
+        }
+    }
+    if (start > end && step < 0){
+        for (let i = start || 0; i > end; i+=step  ){
+            result.push(i);
+        }
+    }
+    return result;
 }
