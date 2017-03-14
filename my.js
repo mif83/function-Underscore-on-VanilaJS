@@ -50,3 +50,12 @@ max(stooges, function(stooge){ return stooge.age; });
 function pluck(arr, field){
     return arr.map(item => item[field]);
 }
+
+/** _.compact
+ * Возвращает копию массива, без всех "ложных" значений. В JavaScript "ложными" считаются false, null, 0, "", undefined и NaN.
+ * @param {Array} arr входящий массив
+ * @returns {Array} новый массив без ложных значений
+ */
+function compact(arr){
+    return arr.filter( item =>!(item === "" || item === 0 || item === null || item === false || item === undefined ) && (item === item));
+}
