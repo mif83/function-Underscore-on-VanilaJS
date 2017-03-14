@@ -23,12 +23,15 @@ http://underscorejs.org/#compact
 http://underscorejs.org/#findIndex
 http://underscorejs.org/#range
 */
-/*
- var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
- _.max(stooges, function(stooge){ return stooge.age; });
- => {name: 'curly', age: 60};*/
+
 
 var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+/**
+ * Возвращает элемент с максимальным значение какогото поля или -infinity если список пустой
+ * @param {Array} arr  - входной список [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}]
+ * @param {functuion}func функция которая возвращает заданный параметр сортировки stooge => stooge.age;
+ * @returns {Object} элемент с максимальным параметром из всех по заданому полю {name: 'curly', age: 60}
+ */
 function max(arr, func){
     if(arr.length === 0) return -Infinity;
     let max = func(arr[0]),
@@ -37,3 +40,13 @@ function max(arr, func){
     return result;
 }
 max(stooges, function(stooge){ return stooge.age; });
+
+/**
+ * Возвращает массив из элементов выбраного поля аналог _.pluck()
+ * @param {Array} arr  - входной список [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}]
+ * @param {String} field название поля в обьекте "name"
+ * @returns {Array} новый массив ["moe", "larry", "curly"]
+ */
+function pluck(arr, field){
+    return arr.map(item => item[field]);
+}
